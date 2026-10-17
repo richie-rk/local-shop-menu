@@ -1,0 +1,7 @@
+# Cloudflare Pages headers. See https://developers.cloudflare.com/pages/configuration/headers/
+# Revalidate on every visit so config/menu/code changes show up immediately (ETags keep it cheap).
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

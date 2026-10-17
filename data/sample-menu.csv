@@ -1,0 +1,11 @@
+name,category,price,unit,available,description,imageUrl
+Whole Chicken (with skin),Whole Chicken,220,kg,Yes,Fresh whole bird with skin,https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=600&q=70&auto=format&fit=crop
+Whole Chicken (skinless),Whole Chicken,260,kg,Yes,"Fresh whole bird, skin removed",https://images.unsplash.com/photo-1672787153720-e85fe802fd9f?w=600&q=70&auto=format&fit=crop
+Chicken Curry Cut,Cuts,280,kg,Yes,Bone-in pieces ready for curry,https://2.wlimg.com/product_images/bc-full/2023/9/3426629/fresh-chicken-curry-cut-1694166449-7070456.jpeg
+Chicken Boneless,Cuts,380,kg,Yes,Boneless cubes,https://images.pexels.com/photos/23359724/pexels-photo-23359724.jpeg?auto=compress&cs=tinysrgb&w=600
+Chicken Breast,Cuts,360,kg,Yes,Boneless breast fillets,https://img.freepik.com/premium-photo/raw-chicken-breasts-spices-fresh-chicken-breast-chicken-breast-fillets-seasonings_406939-6765.jpg?w=2000
+Chicken Drumsticks,Cuts,320,kg,Yes,Leg drumsticks,https://images.pexels.com/photos/7140306/pexels-photo-7140306.jpeg?auto=compress&cs=tinysrgb&w=600
+Chicken Wings,Cuts,240,kg,Yes,Whole wings,https://images.pexels.com/photos/6281484/pexels-photo-6281484.jpeg?auto=compress&cs=tinysrgb&w=600
+Chicken Liver & Gizzard,Others,180,kg,Yes,Fresh liver and gizzard,https://images.pexels.com/photos/6281495/pexels-photo-6281495.jpeg?auto=compress&cs=tinysrgb&w=600
+Eggs,Eggs,84,dozen,Yes,Farm fresh eggs,https://www.foodrepublic.com/img/gallery/the-nutrition-myths-to-ignore-about-raw-eggs/intro-1697637543.jpg
+Eggs (tray of 30),Eggs,200,tray,Yes,Tray of 30 eggs,https://www.foodrepublic.com/img/gallery/the-nutrition-myths-to-ignore-about-raw-eggs/intro-1697637543.jpg

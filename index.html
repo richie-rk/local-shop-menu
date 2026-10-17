@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Menu</title>
+  <meta name="description" content="See today's menu and prices, and order on WhatsApp.">
+  <meta name="theme-color" content="#b3261e">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <!-- All shop-specific values live in config.js. app.js reads them; nothing here is shop-specific. -->
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#menu">Skip to menu</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <span class="logo" id="logo" aria-hidden="true"></span>
+        <div class="brand-text">
+          <h1 id="shop-name" class="shop-name">&nbsp;</h1>
+          <p id="business-type" class="business-type" hidden></p>
+        </div>
+      </div>
+      <p id="open-status" class="status" hidden></p>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="About us">
+      <div class="wrap">
+        <p id="tagline" class="tagline" hidden></p>
+        <p id="delivery-banner" class="delivery-banner" hidden>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="7" cy="17" r="2" fill="currentColor"/><circle cx="17" cy="17" r="2" fill="currentColor"/></svg>
+          <span id="delivery-banner-text"></span>
+        </p>
+        <ul id="highlights" class="chips" hidden></ul>
+        <div class="hero-actions">
+          <a id="hero-call" class="btn btn-outline" hidden>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+            <span>Call</span>
+          </a>
+          <a id="hero-wa" class="btn btn-wa" target="_blank" rel="noopener" hidden>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <nav id="cat-nav" class="cat-nav" aria-label="Menu categories" hidden>
+      <div class="wrap"><ul id="cat-list" class="cat-list"></ul></div>
+    </nav>
+
+    <section id="menu" class="menu" aria-labelledby="menu-title" tabindex="-1">
+      <div class="wrap">
+        <h2 id="menu-title" class="section-title">Menu</h2>
+        <div id="menu-status" class="menu-status" role="status" aria-live="polite"></div>
+        <div id="menu-list"></div>
+      </div>
+    </section>
+
+    <section id="visit" class="visit" aria-labelledby="visit-title" hidden>
+      <div class="wrap">
+        <h2 id="visit-title" class="section-title">Visit us</h2>
+        <div class="visit-grid">
+          <div id="location-card" class="card" hidden>
+            <h3 class="card-title">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+              Address
+            </h3>
+            <address id="address" class="address"></address>
+            <p id="landmark" class="landmark" hidden></p>
+            <div id="map-wrap" class="map-wrap" hidden></div>
+            <div class="btn-row">
+              <a id="directions-btn" class="btn btn-primary" target="_blank" rel="noopener" hidden>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 11.3l-9-9a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5z" fill="currentColor"/></svg>
+                <span>Get directions</span>
+              </a>
+              <a id="maps-link" class="btn btn-outline" target="_blank" rel="noopener" hidden>Open in Google Maps</a>
+            </div>
+          </div>
+
+          <div id="hours-card" class="card" hidden>
+            <h3 class="card-title">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Opening hours
+            </h3>
+            <dl id="hours-list" class="hours-list"></dl>
+            <p id="hours-note" class="muted small" hidden></p>
+          </div>
+
+          <div id="contact-card" class="card" hidden>
+            <h3 class="card-title">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+              Contact
+            </h3>
+            <ul id="contact-list" class="contact-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p id="footer-copy"></p>
+      <p id="footer-credit" hidden></p>
+    </div>
+  </footer>
+
+  <!-- Sticky cart bar (shown when the cart has items) -->
+  <div id="cart-bar" class="cart-bar" hidden>
+    <div class="wrap">
+      <button type="button" id="cart-bar-btn" class="cart-bar-btn">
+        <span class="cart-bar-summary">
+          <span id="cart-bar-count"></span>
+          <strong id="cart-bar-total"></strong>
+        </span>
+        <span class="cart-bar-cta">View cart
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp button for general enquiries -->
+  <a id="wa-fab" class="wa-fab" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
+  </a>
+
+  <!-- Cart review + order form -->
+  <dialog id="cart-dialog" class="sheet" aria-labelledby="cart-title">
+    <form id="order-form" class="sheet-form" novalidate>
+      <header class="sheet-head">
+        <h2 id="cart-title">Your order</h2>
+        <button type="button" class="icon-btn" id="cart-close" aria-label="Close cart">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </button>
+      </header>
+
+      <div class="sheet-body">
+        <p id="cart-closed-note" class="notice notice-warn" hidden></p>
+        <p id="cart-empty" class="cart-empty" hidden>Your cart is empty. Add something from the menu.</p>
+        <ul id="cart-items" class="cart-items"></ul>
+
+        <div id="checkout-fields" class="checkout-fields">
+          <div class="field">
+            <label for="cust-name">Your name <span class="req" aria-hidden="true">*</span></label>
+            <input id="cust-name" name="name" type="text" autocomplete="name" required maxlength="60" aria-describedby="cust-name-err">
+            <p id="cust-name-err" class="field-error" hidden></p>
+          </div>
+
+          <fieldset id="order-type-fieldset" class="field" aria-describedby="order-type-err">
+            <legend>How would you like your order? <span class="req" aria-hidden="true">*</span></legend>
+            <div class="radio-cards">
+              <label class="radio-card">
+                <input type="radio" name="orderType" value="pickup">
+                <span class="radio-card-body">
+                  <strong>Pickup</strong>
+                  <span class="muted small">Collect from the shop</span>
+                </span>
+              </label>
+              <label class="radio-card" id="delivery-option">
+                <input type="radio" name="orderType" value="delivery">
+                <span class="radio-card-body">
+                  <strong>Home delivery <span id="delivery-tag" class="tag" hidden></span></strong>
+                  <span id="delivery-option-note" class="muted small">We bring it to you</span>
+                </span>
+              </label>
+            </div>
+            <p id="order-type-err" class="field-error" hidden></p>
+          </fieldset>
+
+          <div id="address-field" class="field" hidden>
+            <label for="cust-address">Delivery address <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="cust-address" name="address" rows="3" autocomplete="street-address" maxlength="300" placeholder="Flat / house no., building, sector, landmark" aria-describedby="cust-address-err"></textarea>
+            <p id="cust-address-err" class="field-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="cust-notes">Notes <span class="muted small">(optional)</span></label>
+            <textarea id="cust-notes" name="notes" rows="2" maxlength="300" placeholder="e.g. small pieces, deliver after 1 pm"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <footer class="sheet-foot">
+        <dl class="totals">
+          <div class="totals-row" id="subtotal-row" hidden><dt>Subtotal</dt><dd id="subtotal"></dd></div>
+          <div class="totals-row" id="delivery-row" hidden><dt>Delivery</dt><dd id="delivery-fee"></dd></div>
+          <div class="totals-row totals-grand"><dt>Total</dt><dd id="grand-total"></dd></div>
+        </dl>
+        <p id="min-order-warning" class="notice notice-warn small" hidden></p>
+        <button type="submit" id="send-order" class="btn btn-wa btn-block btn-lg">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
+          <span>Send order on WhatsApp</span>
+        </button>
+        <p id="send-hint" class="muted small center">WhatsApp opens with your order filled in. Just tap send.</p>
+        <div id="sent-note" class="sent-note" hidden>
+          <p><strong>WhatsApp opened with your order.</strong> Press send there to place it.</p>
+          <button type="button" id="new-order-btn" class="btn btn-outline btn-block">Done, start a new order</button>
+        </div>
+      </footer>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="sr-live" class="visually-hidden" aria-live="polite"></div>
+
+  <noscript>
+    <p class="noscript">Please turn on JavaScript to see our menu and order online.</p>
+  </noscript>
+
+  <!-- Shared icon (chat bubble with phone) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-wa" viewBox="0 0 24 24">
+      <path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.2 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2zm0 1.8a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4z" fill="currentColor"/>
+      <path d="M8.6 7.4c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .6.4l.8 1.9c.1.2.1.4 0 .6l-.5.6c-.1.2-.2.3 0 .6.4.7 1 1.4 1.6 1.9.7.5 1.2.8 1.5.9.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.3.1.4.2.4.4.1.4-.1 1-.4 1.4-.4.5-1.3.9-2 .9-.8 0-1.8-.2-3.4-1-1.9-1-3.2-2.9-3.6-3.5-.4-.6-.9-1.6-.9-2.6 0-.9.4-1.4.6-1.8z" fill="currentColor"/>
+    </symbol>
+  </svg>
+</body>
+</html>
