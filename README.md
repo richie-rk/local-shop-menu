@@ -69,8 +69,8 @@ The menu on a 360px phone, and the cart sheet with free home delivery.
 ### Setup
 
 ```bash
-git clone https://github.com/richie-rk/<this-repo>.git
-cd <this-repo>
+git clone https://github.com/richie-rk/local-shop-menu.git
+cd local-shop-menu
 
 python -m http.server 8000      # or: npx serve .
 ```
@@ -122,7 +122,7 @@ This repository is the template. Each shop gets its own copy that differs **only
 - **Use this template** (copy can be private): **Use this template → Create a new repository** → edit `config.js` → deploy. Get updates by adding this repo as `upstream`:
 
 ```bash
-git remote add upstream https://github.com/richie-rk/<this-repo>.git
+git remote add upstream https://github.com/richie-rk/local-shop-menu.git
 git fetch upstream
 git merge upstream/main --allow-unrelated-histories   # first time only
 git checkout --ours config.js && git add config.js     # keep your config if it conflicts
